@@ -1,0 +1,12 @@
+{
+    "manifest_version": 3,
+    "name": "protect-from-deepl",
+    "version": "1.0",
+    "description": "protect from deepl",
+    "content_scripts": [
+         {
+            "matches": ["<all_urls>"],
+             "js": ["content.js"]
+         }
+    ]
+}
