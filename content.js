@@ -3,6 +3,10 @@ setNoTranslate(isIgnoreElement());
 function isIgnoreElement() {
   //tag名がcodeの要素を取得
   const code_elements = document.getElementsByTagName("code");
+
+  /**
+   * GitHub
+   */
   //tag名がcode-sampleの要素を取得
   const code_sample_elements = document.getElementsByClassName("code-sample");
   //h1~h3の要素を取得
@@ -29,6 +33,11 @@ function isIgnoreElement() {
   //classがBox-bodyの要素を取得
   const Box_body_elements = document.getElementsByClassName("Box-body");
 
+  ///flutter.dev
+  //classがcode-excerpt__codeの要素を取得
+  const code_excerpt__code_elements =
+    document.getElementsByClassName("code-excerpt__code");
+
   //すべての要素をリターン
   return Array.from(code_elements)
     .concat(Array.from(code_sample_elements))
@@ -41,7 +50,8 @@ function isIgnoreElement() {
     .concat(Array.from(rowheader_elements))
     .concat(Array.from(nav_elements))
     .concat(Array.from(pagehead_actions_elements))
-    .concat(Array.from(Box_body_elements));
+    .concat(Array.from(Box_body_elements))
+    .concat(Array.from(code_excerpt__code_elements));
 }
 
 // 取得した要素にtranslate属性を追加
