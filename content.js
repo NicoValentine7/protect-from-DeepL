@@ -1,16 +1,33 @@
+spanPre();
 setNoTranslate(isIgnoreElement());
+
+// preタグがあったら、spanタグで囲む
+function spanPre() {
+  const pre_elements = document.getElementsByTagName("pre");
+  for (let i = 0; i < pre_elements.length; i++) {
+    const pre = pre_elements[i];
+    const span = document.createElement("span");
+    span.innerHTML = pre.innerHTML;
+    pre.parentNode.replaceChild(span, pre);
+
+    //spanタグにtranslate属性を追加
+    span.setAttribute("translate", "no");
+  }
+}
 
 function isIgnoreElement() {
   //tag名がcodeの要素を取得
   const code_elements = document.getElementsByTagName("code");
+  //h1~h3の要素を取得
+  const h_elements = document.querySelectorAll("h1, h2, h3");
+  //preタグの要素を取得
+  const pre_elements = document.getElementsByTagName("pre");
 
   /**
    * GitHub
    */
   //tag名がcode-sampleの要素を取得
   const code_sample_elements = document.getElementsByClassName("code-sample");
-  //h1~h3の要素を取得
-  const h_elements = document.querySelectorAll("h1, h2, h3");
   //class名"octotree-sidebar"の要素を取得
   const octotree_sidebar_elements =
     document.getElementsByClassName("octotree-sidebar");
@@ -51,7 +68,8 @@ function isIgnoreElement() {
     .concat(Array.from(nav_elements))
     .concat(Array.from(pagehead_actions_elements))
     .concat(Array.from(Box_body_elements))
-    .concat(Array.from(code_excerpt__code_elements));
+    .concat(Array.from(code_excerpt__code_elements))
+    .concat(Array.from(pre_elements));
 }
 
 // 取得した要素にtranslate属性を追加
