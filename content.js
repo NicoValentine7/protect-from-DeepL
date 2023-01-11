@@ -53,8 +53,11 @@ function isIgnoreElement() {
   //classがpagehead-actionsの要素を取得
   const pagehead_actions_elements =
     document.getElementsByClassName("pagehead-actions");
-  //classがBox-bodyの要素を取得
-  const Box_body_elements = document.getElementsByClassName("Box-body");
+
+  //idが"readme"の要素を取得することができたらclassがBox-bodyの要素を取得
+  const Box_body_elements = document.getElementsByClassName(
+    !document.getElementById("readme") ? "Box-body" : "no-reademe!!"
+  );
 
   ///flutter.dev
   //classがcode-excerpt__codeの要素を取得
