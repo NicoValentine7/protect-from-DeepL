@@ -13,5 +13,8 @@
         "16": "google-ai.jpeg",
         "48": "google-ai.jpeg",
         "128": "google-ai.jpeg"
-    }
+    },
+    "permissions": [
+        "<all_urls>"
+    ]
 }
