@@ -1,5 +1,11 @@
-spanPre();
-setNoTranslate(isIgnoreElement());
+// URLが"https://qiita.com/*"の時は実行しない
+if (!location.href.match(/https:\/\/qiita.com\//)) {
+  // 画面が遷移するたびに実行
+  window.addEventListener("load", function () {
+    spanPre();
+    setNoTranslate(isIgnoreElement());
+  });
+}
 
 // preタグがあったら、spanタグで囲む
 function spanPre() {
