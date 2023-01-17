@@ -2,23 +2,8 @@
 if (!location.href.match(/https:\/\/qiita.com\//)) {
   // 画面が遷移するたびに実行
   window.addEventListener("load", function () {
-    spanPre();
     setNoTranslate(isIgnoreElement());
   });
-}
-
-// preタグがあったら、spanタグで囲む
-function spanPre() {
-  const pre_elements = document.getElementsByTagName("pre");
-  for (let i = 0; i < pre_elements.length; i++) {
-    const pre = pre_elements[i];
-    const span = document.createElement("span");
-    span.innerHTML = pre.innerHTML;
-    pre.parentNode.replaceChild(span, pre);
-
-    //spanタグにtranslate属性を追加
-    span.setAttribute("translate", "no");
-  }
 }
 
 function isIgnoreElement() {
