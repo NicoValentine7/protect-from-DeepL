@@ -9,8 +9,12 @@ if (!location.href.match(/https:\/\/qiita.com\//)) {
 function isIgnoreElement() {
   //tag名がcodeの要素を取得
   const code_elements = document.getElementsByTagName("code");
-  //h1~h3の要素を取得
-  const h_elements = document.querySelectorAll("h1, h2, h3");
+  let h_elements = null;
+  if (location.href.match(/https:\/\/github.com\//)) {
+    //h1~h3の要素を取得
+    const h_elements = document.querySelectorAll("h1, h2, h3");
+  }
+
   //preタグの要素を取得
   const pre_elements = document.getElementsByTagName("pre");
 
@@ -52,7 +56,7 @@ function isIgnoreElement() {
   //すべての要素をリターン
   return Array.from(code_elements)
     .concat(Array.from(code_sample_elements))
-    .concat(Array.from(h_elements))
+    .concat(Array.from(h_elements ?? []))
     .concat(Array.from(octotree_sidebar_elements))
     .concat(Array.from(strong_elements))
     .concat(Array.from(author_elements))
