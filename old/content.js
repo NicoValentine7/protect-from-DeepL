@@ -1,5 +1,8 @@
 // URLが"https://qiita.com/*"の時は実行しない
-if (!location.href.match(/https:\/\/qiita.com\//)) {
+if (
+  !location.href.match(/https:\/\/qiita.com\//) ||
+  !location.href.match(/https:\/\/codelabs.developers.google.com\//)
+) {
   // 画面が遷移するたびに実行
   window.addEventListener("load", function () {
     setNoTranslate(isIgnoreElement());
@@ -53,6 +56,9 @@ function isIgnoreElement() {
   const code_excerpt__code_elements =
     document.getElementsByClassName("code-excerpt__code");
 
+    //data-langが設定されている要素を取得
+  const data_lang_elements = document.querySelectorAll("[data-lang]");
+
   //すべての要素をリターン
   return Array.from(code_elements)
     .concat(Array.from(code_sample_elements))
@@ -67,7 +73,8 @@ function isIgnoreElement() {
     .concat(Array.from(pagehead_actions_elements))
     .concat(Array.from(Box_body_elements))
     .concat(Array.from(code_excerpt__code_elements))
-    .concat(Array.from(pre_elements));
+    .concat(Array.from(pre_elements))
+    .concat(Array.from(data_lang_elements));
 }
 
 // 取得した要素にtranslate属性を追加
